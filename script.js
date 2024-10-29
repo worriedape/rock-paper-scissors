@@ -1,49 +1,59 @@
 function playGame() {
+  let humanScore = 0;
 
-    let humanScore = 0;
+  let computerScore = 0;
 
-    let computerScore = 0;
+  function playRound(humanChoice, computerChoice) {
+    function getComputerChoice() {
+      function random(number) {
+        return Math.floor(Math.random() * 100);
+      }
 
-
-    function playRound(humanChoice, computerChoice) {
-
-        function getComputerChoice() {
-
-            function random(number) {
-                return Math.floor(Math.random() * 100);
-            }
-
-            function choose(rock, paper, scissors) {
-                if (random() <= 33) {
-                    return ("rock")
-                } else if (random() > 66) {
-                    return ("paper")
-                } else return ("scissors");
-            }
-
-        }
-
-        function getHumanChoice() {
-
-            let choiceOriginal = prompt('Write down your weapon. (Rock, paper, or scissors)');
-
-            let choice = choiceOriginal.toLowerCase();
-
-            if (choice === "rock" || choice === "paper" || choice === "scissors") {
-                return (/*score eg 'Your ${choice} against ${getComputerChoice} */)
-            } else (alert("Use only rock, paper, or scissors."))
-
-        }
-
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-
-
-        for (let playRound = 0; playRound < 6; playRound++) {
-            playRound();
-        }
-
+      function choose() {
+        if (random() <= 33) {
+          return "rock";
+        } else if (random() > 66) {
+          return "paper";
+        } else return "scissors";
+      }
+      return choose();
     }
+
+    function getHumanChoice() {
+      let choiceOriginal = prompt(
+        "Write down your weapon. (Rock, paper, or scissors)"
+      );
+
+      let choice = choiceOriginal.toLowerCase();
+
+      if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        return choice;
+      } else alert("Use only rock, paper, or scissors.");
+    }
+
+    // confirm(`You: ${getHumanChoice()} vs Computer: ${getComputerChoice()}`);
+
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    if (
+      (humanSelection === "rock" && computerSelection === "paper") ||
+      (humanSelection === "paper" && computerSelection === "scissors") ||
+      (humanSelection === "scissors" && computerSelection === "rock")
+    ) {
+      alert(`You lose! ${computerSelection} beats ${humanSelection}.`);
+    } else if (
+      (humanSelection === "paper" && computerSelection === "rock") ||
+      (humanSelection === "scissors" && computerSelection === "paper") ||
+      (humanSelection === "rock" && computerSelection === "scissors")
+    ) {
+      alert(`You win! ${humanSelection} beats ${computerSelection}.`);
+    } else alert(`You're even!`);
+
+    playRound(humanSelection, computerSelection);
+
+    for (let playRound = 0; playRound < 6; playRound++) {
+      playRound();
+    }
+  }
 }
