@@ -31,8 +31,6 @@ function playGame() {
       } else alert("Use only rock, paper, or scissors.");
     }
 
-    // confirm(`You: ${getHumanChoice()} vs Computer: ${getComputerChoice()}`);
-
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
@@ -42,18 +40,17 @@ function playGame() {
       (humanSelection === "scissors" && computerSelection === "rock")
     ) {
       alert(`You lose! ${computerSelection} beats ${humanSelection}.`);
+      return computerScore++;
     } else if (
       (humanSelection === "paper" && computerSelection === "rock") ||
       (humanSelection === "scissors" && computerSelection === "paper") ||
       (humanSelection === "rock" && computerSelection === "scissors")
     ) {
       alert(`You win! ${humanSelection} beats ${computerSelection}.`);
+      return humanScore++;
     } else alert(`You're even!`);
-
-    playRound(humanSelection, computerSelection);
-
-    for (let playRound = 0; playRound < 6; playRound++) {
-      playRound();
-    }
   }
+
 }
+
+playRound();
