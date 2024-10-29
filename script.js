@@ -3,6 +3,10 @@ function playGame() {
 
   let computerScore = 0;
 
+  if (humanScore == 5 && computerScore == 5) for (let i = 0; i < 6; i++) {}
+
+  let playO = playRound();
+
   function playRound(humanChoice, computerChoice) {
     function getComputerChoice() {
       function random(number) {
@@ -34,23 +38,19 @@ function playGame() {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
+    let lose = `You lose! ${computerSelection} beats ${humanSelection}.`;
+    let win = `You win! ${humanSelection} beats ${computerSelection}.`;
+
     if (
       (humanSelection === "rock" && computerSelection === "paper") ||
       (humanSelection === "paper" && computerSelection === "scissors") ||
       (humanSelection === "scissors" && computerSelection === "rock")
     ) {
-      alert(`You lose! ${computerSelection} beats ${humanSelection}.`);
-      return computerScore++;
-    } else if (
-      (humanSelection === "paper" && computerSelection === "rock") ||
-      (humanSelection === "scissors" && computerSelection === "paper") ||
-      (humanSelection === "rock" && computerSelection === "scissors")
-    ) {
-      alert(`You win! ${humanSelection} beats ${computerSelection}.`);
-      return humanScore++;
-    } else alert(`You're even!`);
+      alert(lose);
+    } else if (humanSelection === computerSelection) {
+      alert(`It's a match. You both picked ${humanSelection}.`);
+    } else alert(win);
   }
 
+  playRound();
 }
-
-playRound();
