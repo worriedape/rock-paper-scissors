@@ -1,61 +1,49 @@
-function getComputerChoice() {
-
-    function random(number) {
-        return Math.floor(Math.random() * 100);
-        }
-
-    function choose(rock, paper, scissors) {
-        if ( random() <= 33 ) {
-         alert("Rock")
-        } else if ( random() > 66 ) {
-         alert("Paper")
-        } else (alert("Scissors"));
-        }
-        
-    choose();
-}
-
-function getHumanChoice() {
-
-    let choice = prompt('Add R for rock, P for paper, and S for scissors.');
-
-    if ( choice === "R" ) {
-        alert("Rock")
-    } else if ( choice === "P") {
-        alert("Paper")
-    } else if ( choice === "S") {
-        alert("Scissors")
-    } else (alert("Use only R, P, or S."))
-}
-
-
 function playGame() {
-    
- let humanScore = ;
 
- let computerScore = ;
+    let humanScore = 0;
 
- function playRound(humanChoice, computerChoice) {
-
- }
-
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
+    let computerScore = 0;
 
 
-    /*
+    function playRound(humanChoice, computerChoice) {
 
-    let humanChoice = getHumanChoice();
+        function getComputerChoice() {
 
-    let computerChoice = getComputerChoice();
+            function random(number) {
+                return Math.floor(Math.random() * 100);
+            }
 
-    if(humanChoice() )
-}
+            function choose(rock, paper, scissors) {
+                if (random() <= 33) {
+                    return ("rock")
+                } else if (random() > 66) {
+                    return ("paper")
+                } else return ("scissors");
+            }
 
-    for (let playRound() = 0, playRound() < 6, playRound()++) {
-        playRound();
+        }
+
+        function getHumanChoice() {
+
+            let choiceOriginal = prompt('Write down your weapon. (Rock, paper, or scissors)');
+
+            let choice = choiceOriginal.toLowerCase();
+
+            if (choice === "rock" || choice === "paper" || choice === "scissors") {
+                return (/*score eg 'Your ${choice} against ${getComputerChoice} */)
+            } else (alert("Use only rock, paper, or scissors."))
+
+        }
+
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
+
+        for (let playRound = 0; playRound < 6; playRound++) {
+            playRound();
+        }
+
     }
-
 }
