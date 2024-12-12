@@ -1,56 +1,39 @@
-function playGame() {
-  let humanScore = 0;
+// takes human choice
+const paper = document.querySelector(".paper");
+paper.addEventListener("click", humanSelection = "paper")
 
-  let computerScore = 0;
+const rock = document.querySelector(".rock");
+rock.addEventListener("click", (humanSelection = "rock"));
 
-  if (humanScore == 5 && computerScore == 5) for (let i = 0; i < 6; i++) {}
+const scissors = document.querySelector(".scissors");
+scissors.addEventListener("click", (humanSelection = "scissors"));
 
-  let playO = playRound();
+// generate random computer choice
+const paperRockScissors = ["paper", "rock", "scissors"];
+let randomRPS = function () {
+  // return a random index from array paperRockScissors
+  let random = Math.floor(Math.random() * paperRockScissors.length);
+  // return the string attached to the index returned by random
+  return paperRockScissors[random];
+};
 
-  function playRound(humanChoice, computerChoice) {
-    function getComputerChoice() {
-      function random(number) {
-        return Math.floor(Math.random() * 100);
-      }
+// compare both choices
+const div = document.createElement("div");
 
-      function choose() {
-        if (random() <= 33) {
-          return "rock";
-        } else if (random() > 66) {
-          return "paper";
-        } else return "scissors";
-      }
-      return choose();
-    }
+let humanSelection = "";
 
-    function getHumanChoice() {
-      let choiceOriginal = prompt(
-        "Write down your weapon. (Rock, paper, or scissors)"
-      );
+if (
+  (humanSelection === "rock" && computerSelection === "paper") ||
+  (humanSelection === "paper" && computerSelection === "scissors") ||
+  (humanSelection === "scissors" && computerSelection === "rock")
+) {
+  computerScore += 1;
+} else if (humanSelection === computerSelection) {
+  return tie;
+} humanScore += 1;
 
-      let choice = choiceOriginal.toLowerCase();
+// keep track of both choices and define round limit
+let humanScore = 0;
+let computerScore = 0;
 
-      if (choice === "rock" || choice === "paper" || choice === "scissors") {
-        return choice;
-      } else alert("Use only rock, paper, or scissors.");
-    }
-
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    let lose = `You lose! ${computerSelection} beats ${humanSelection}.`;
-    let win = `You win! ${humanSelection} beats ${computerSelection}.`;
-
-    if (
-      (humanSelection === "rock" && computerSelection === "paper") ||
-      (humanSelection === "paper" && computerSelection === "scissors") ||
-      (humanSelection === "scissors" && computerSelection === "rock")
-    ) {
-      alert(lose);
-    } else if (humanSelection === computerSelection) {
-      alert(`It's a match. You both picked ${humanSelection}.`);
-    } else alert(win);
-  }
-
-  playRound();
-}
+// announce winner
