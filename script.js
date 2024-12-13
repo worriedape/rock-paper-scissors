@@ -3,19 +3,23 @@ let humanScore = 0;
 let computerScore = 0;
 let tie = 0;
 
+const paperRockScissors = ["paper", "rock", "scissors"];
+
 outer: for (let i = 0; ; i++) {
   // takes human choice
   let humanSelection = prompt("Choose between rock, paper, and scissors");
 
+  if (!paperRockScissors.includes(humanSelection.toLowerCase())) continue outer;
+
   // generate random computer choice
   function computerSelector() {
-    const paperRockScissors = ["paper", "rock", "scissors"];
     // return a random index from array paperRockScissors
     let random = Math.floor(Math.random() * paperRockScissors.length);
     // return the string attached to the index returned by random
     return paperRockScissors[random];
   }
 
+  // check funtion declaration vs expression
   // each time the comparison runs the function calling computerSelector
   // a new random value is returned, making it impossible to compare a
   // consisting value throughout the iteration
@@ -23,10 +27,7 @@ outer: for (let i = 0; ; i++) {
   let computerSelection = computerSelector();
 
   //let versus = ;
-
   console.log(humanSelection, "vs", computerSelection);
-
-  // compare both choices
 
   //let comparison = () => {
   if (
@@ -39,8 +40,6 @@ outer: for (let i = 0; ; i++) {
     tie += 1;
   } else humanScore += 1;
   //};
-
-  //comparison();
 
   console.log(humanScore, computerScore, tie);
 
