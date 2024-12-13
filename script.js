@@ -4,20 +4,26 @@ let computerScore = 0;
 let tie = 0;
 
 // buttons
+/*
 const paper = document.querySelector(".paper");
 const rock = document.querySelector(".rock");
 const scissors = document.querySelector(".scissors");
+*/
+let humanSelection;
 
 const buttons = document.querySelectorAll("button");
-buttons.addEventListener("click", humanSelection = div.getAttribute("class"));
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    humanSelection = button.class;
+  });
+});
 
 // create <p> textContent of humanSelection vs computerSelection
 const paraVersus = document.createElement("p");
 
 // scoreboard
-const scoreBoard = document.createElement("p"); 
-
-let humanSelection;
+const scoreBoard = document.createElement("p");
 
 const paperRockScissors = ["paper", "rock", "scissors"];
 
