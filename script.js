@@ -28,10 +28,6 @@ const scoreBoard = document.createElement("p");
 scoreBoard.textContent = "";
 body.appendChild(scoreBoard);
 
-if (((humanScore = 0), (computerScore = 0), (tie = 0))) {
-  winner.textContent = "";
-}
-
 // announce winner
 const winner = document.createElement("p");
 winner.textContent;
@@ -39,6 +35,7 @@ body.appendChild(winner);
 
 const paperRockScissors = ["paper", "rock", "scissors"];
 
+// ------- round --------
 function playRound() {
   // generate random computer choice
   function computerSelector() {
@@ -63,20 +60,17 @@ function playRound() {
   } else humanScore++;
 
   // scoreboard
-  scoreBoard.textContent = `You: ${humanScore} | Computer: ${computerScore} | Tie: ${tie}`;
+  scoreBoard.textContent = `You: ${humanScore}  |  Computer: ${computerScore}  |  Tie: ${tie}`;
 
-  if (humanScore === 3) {
-    winner.textContent = "You win!";
-    (humanScore = 0), (computerScore = 0), (tie = 0);
-  } else if (computerScore === 3) {
-    winner.textContent = "Computer wins!";
-    (humanScore = 0), (computerScore = 0), (tie = 0);
+  if (humanScore === 1 || computerScore === 1 || tie === 1) {
+    winner.textContent = "";
   }
 
-  if (
-    winner.textContent === "You win!" ||
-    winner.textContent === "Computer wins!"
-  ) {
-    scoreBoard.textContent = `You: ${humanScore} | Computer: ${computerScore} | Tie: ${tie}`;
+  if (humanScore === 5) {
+    winner.textContent = "You win!";
+    (humanScore = 0), (computerScore = 0), (tie = 0);
+  } else if (computerScore === 5) {
+    winner.textContent = "Computer wins!";
+    (humanScore = 0), (computerScore = 0), (tie = 0);
   }
 }
