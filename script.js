@@ -4,11 +4,6 @@ let computerScore = 0;
 let tie = 0;
 
 // buttons
-/*
-const paper = document.querySelector(".paper");
-const rock = document.querySelector(".rock");
-const scissors = document.querySelector(".scissors");
-*/
 let humanSelection;
 
 const body = document.querySelector("body");
@@ -23,16 +18,6 @@ buttons.forEach((button) => {
 });
 
 // create <p> textContent of humanSelection vs computerSelection
-/*
-const paraVersus = document.createElement("p");
-paraVersus.classList.add("versus");
-paraVersus.textContent = `${humanSelection} vs ${computerSelection}
-${humanScore}, ${computerScore}, ${tie}`;
-
-body.appendChild(paraVersus);
-*/
-
-// create <p> textContent of humanSelection vs computerSelection
 const paraVersus = document.createElement("p");
 paraVersus.classList.add("versus");
 paraVersus.textContent = "";
@@ -42,6 +27,11 @@ body.appendChild(paraVersus);
 const scoreBoard = document.createElement("p");
 scoreBoard.textContent = "";
 body.appendChild(scoreBoard);
+
+// announce winner
+const winner = document.createElement("p");
+winner.textContent;
+body.appendChild(winner);
 
 const paperRockScissors = ["paper", "rock", "scissors"];
 
@@ -62,65 +52,50 @@ function playRound() {
   function computerSelector() {
     // return a random index from array paperRockScissors
     let random = Math.floor(Math.random() * paperRockScissors.length);
-    // return the string attached to the index returned by random
     return paperRockScissors[random];
   }
 
-  // check funtion declaration vs expression
-  // each time the comparison runs the function calling computerSelector
-  // a new random value is returned, making it impossible to compare a
-  // consisting value throughout the iteration
-  // so we need to assign it to another variable
   let computerSelection = computerSelector();
 
-  // create <p> textContent of humanSelection vs computerSelection
-  //const paraVersus = document.createElement("p");
-  //paraVersus.classList.add("versus");
   paraVersus.textContent = `Yours: ${humanSelection} | Computer's: ${computerSelection}`;
-  //body.appendChild(paraVersus);
 
-  //let comparison = () => {
+  // comparison
   if (
     (humanSelection === "rock" && computerSelection === "paper") ||
     (humanSelection === "paper" && computerSelection === "scissors") ||
     (humanSelection === "scissors" && computerSelection === "rock")
   ) {
-    // from x += 1; to x++
     computerScore++;
   } else if (humanSelection === computerSelection) {
     tie++;
   } else humanScore++;
-  //};
-
-  //console.log(humanScore, computerScore, tie);
 
   //if (humanScore === 3 || computerScore === 3) break outer;
   //}
 
   // scoreboard
-  //const scoreBoard = document.createElement("p");
   scoreBoard.textContent = `You: ${humanScore} | Computer: ${computerScore} | Tie: ${tie}`;
-  //body.appendChild(scoreBoard);
-
-  const winner = document.createElement("p");
-  //winner.textContent;
-  //body.appendChild(winner);
 
   if (humanScore === 3) {
     winner.textContent = "You win!";
-    body.appendChild(winner);
+    (humanScore = 0), (computerScore = 0), (tie = 0);
   } else if (computerScore === 3) {
     winner.textContent = "Computer wins!";
-    body.appendChild(winner);
+    (humanScore = 0), (computerScore = 0), (tie = 0);
+  }
+
+  if (
+    winner.textContent === "You win!" ||
+    winner.textContent === "Computer wins!"
+  ) {
+    scoreBoard.textContent = `You: ${humanScore} | Computer: ${computerScore} | Tie: ${tie}`;
+    /*setTimeout(
+      ((humanScore = 0),
+      (computerScore = 0),
+      (tie = 0),
+      (winner.textContent = "")),
+      3000
+    );
+    */
   }
 }
-
-// announce winner
-//let winner = function () {
-/*
-if (humanScore === 3) {
-  console.log("You win!");
-} else if (computerScore === 3) {
-  console.log("Computer wins!");
-}
-*/
