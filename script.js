@@ -11,24 +11,37 @@ const scissors = document.querySelector(".scissors");
 */
 let humanSelection;
 
+const body = document.querySelector("body");
+
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     humanSelection = button.class;
+    playRound();
   });
 });
 
 // create <p> textContent of humanSelection vs computerSelection
+/*
 const paraVersus = document.createElement("p");
+paraVersus.classList.add("versus");
+paraVersus.textContent = `${humanSelection} vs ${computerSelection}
+${humanScore}, ${computerScore}, ${tie}`;
+
+body.appendChild(paraVersus);
+*/
 
 // scoreboard
 const scoreBoard = document.createElement("p");
+scoreBoard.textContent = `You:${humanScore}, computer:${computerScore}, tie:${tie}`;
+body.appendChild(scoreBoard);
 
 const paperRockScissors = ["paper", "rock", "scissors"];
 
-// play round
-outer: for (let i = 0; ; i++) {
+function playRound() {
+  // play round
+  //outer: for (let i = 0; ; i++) {
   // takes human choice
   //let humanSelection = prompt("Choose between rock, paper, and scissors");
 
@@ -54,6 +67,11 @@ outer: for (let i = 0; ; i++) {
   // so we need to assign it to another variable
   let computerSelection = computerSelector();
 
+  const paraVersus = document.createElement("p");
+  paraVersus.classList.add("versus");
+  paraVersus.textContent = `${humanSelection} vs ${computerSelection}`;
+  body.appendChild(paraVersus);
+
   //let versus = ;
   console.log(humanSelection, "vs", computerSelection);
 
@@ -70,15 +88,30 @@ outer: for (let i = 0; ; i++) {
   } else humanScore++;
   //};
 
-  console.log(humanScore, computerScore, tie);
+  //console.log(humanScore, computerScore, tie);
 
-  if (humanScore === 3 || computerScore === 3) break outer;
+  //if (humanScore === 3 || computerScore === 3) break outer;
+  //}
 }
 
 // announce winner
 //let winner = function () {
+/*
 if (humanScore === 3) {
   console.log("You win!");
 } else if (computerScore === 3) {
   console.log("Computer wins!");
+}
+*/
+
+const winner = document.createElement("p");
+winner.textContent = "";
+body.appendChild(winner);
+
+if (humanScore === 3) {
+  winner.textContent = "You win!";
+  body.appendChild(winner);
+} else if (computerScore === 3) {
+  winner.textContent = "Computer wins!";
+  body.appendChild(winner);
 }
