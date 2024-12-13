@@ -42,11 +42,10 @@ outer: for (let i = 0; ; i++) {
 }
 
 // announce winner
-let winner = function () {
+//let winner = function () {
   if (humanScore === 3) {
-    return "You win!";
+    console.log("You win!");
   } else if (computerScore === 3) {
-    return "Computer wins!";
+    console.log("Computer wins!");
   }
-};
-console.log(winner());
+
