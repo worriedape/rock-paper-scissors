@@ -40,18 +40,6 @@ body.appendChild(winner);
 const paperRockScissors = ["paper", "rock", "scissors"];
 
 function playRound() {
-  // play round
-  //outer: for (let i = 0; ; i++) {
-  // takes human choice
-  //let humanSelection = prompt("Choose between rock, paper, and scissors");
-
-  /*
-  if (!paperRockScissors.includes(humanSelection.toLowerCase())) {
-    alert("Input only: rock, paper, or scissors");
-    continue outer;
-  }
-    */
-
   // generate random computer choice
   function computerSelector() {
     // return a random index from array paperRockScissors
@@ -74,9 +62,6 @@ function playRound() {
     tie++;
   } else humanScore++;
 
-  //if (humanScore === 3 || computerScore === 3) break outer;
-  //}
-
   // scoreboard
   scoreBoard.textContent = `You: ${humanScore} | Computer: ${computerScore} | Tie: ${tie}`;
 
@@ -93,13 +78,5 @@ function playRound() {
     winner.textContent === "Computer wins!"
   ) {
     scoreBoard.textContent = `You: ${humanScore} | Computer: ${computerScore} | Tie: ${tie}`;
-    /*setTimeout(
-      ((humanScore = 0),
-      (computerScore = 0),
-      (tie = 0),
-      (winner.textContent = "")),
-      3000
-    );
-    */
   }
 }
