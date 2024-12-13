@@ -38,10 +38,11 @@ outer: for (let i = 0; ; i++) {
     (humanSelection === "paper" && computerSelection === "scissors") ||
     (humanSelection === "scissors" && computerSelection === "rock")
   ) {
-    computerScore += 1;
+    // from x += 1; to x++
+    computerScore++;
   } else if (humanSelection === computerSelection) {
-    tie += 1;
-  } else humanScore += 1;
+    tie++;
+  } else humanScore++;
   //};
 
   console.log(humanScore, computerScore, tie);
