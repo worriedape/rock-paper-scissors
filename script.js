@@ -9,7 +9,10 @@ outer: for (let i = 0; ; i++) {
   // takes human choice
   let humanSelection = prompt("Choose between rock, paper, and scissors");
 
-  if (!paperRockScissors.includes(humanSelection.toLowerCase())) continue outer;
+  if (!paperRockScissors.includes(humanSelection.toLowerCase())) {
+    alert("Input only: rock, paper, or scissors");
+    continue outer;
+  }
 
   // generate random computer choice
   function computerSelector() {
