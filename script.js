@@ -1,30 +1,28 @@
-// takes human choice
-let humanSelection;
-
-const paper = document.querySelector(".paper");
-paper.addEventListener("click", (humanSelection = "paper"));
-
-const rock = document.querySelector(".rock");
-rock.addEventListener("click", (humanSelection = "rock"));
-
-const scissors = document.querySelector(".scissors");
-scissors.addEventListener("click", (humanSelection = "scissors"));
-
-// generate random computer choice
-let computerSelection = function () {
-  const paperRockScissors = ["paper", "rock", "scissors"];
-  // return a random index from array paperRockScissors
-  let random = Math.floor(Math.random() * paperRockScissors.length);
-  // return the string attached to the index returned by random
-  return paperRockScissors[random];
-};
-
-// keep track of both choices and define round limit
+// keep score tracks
 let humanScore = 0;
 let computerScore = 0;
-// compare both choices
-//const div = document.createElement("div");
-let comparison = function () {
+let tie = 0;
+
+outer: for (let i = 0; ; i++) {
+  // takes human choice
+  let humanSelection = prompt("Choose between rock, paper, and scissors");
+
+  // generate random computer choice
+  let computerSelection = function () {
+    const paperRockScissors = ["paper", "rock", "scissors"];
+    // return a random index from array paperRockScissors
+    let random = Math.floor(Math.random() * paperRockScissors.length);
+    // return the string attached to the index returned by random
+    return paperRockScissors[random];
+  };
+
+  //let versus = ;
+
+  console.log(humanSelection, "vs", computerSelection());
+
+  // compare both choices
+
+  //let comparison = () => {
   if (
     (humanSelection === "rock" && computerSelection === "paper") ||
     (humanSelection === "paper" && computerSelection === "scissors") ||
@@ -32,14 +30,23 @@ let comparison = function () {
   ) {
     computerScore += 1;
   } else if (humanSelection === computerSelection) {
-    return "tie";
-  }
-  humanScore += 1;
-};
+    tie += 1;
+  } else humanScore += 1;
+  //};
+
+  //comparison();
+
+  console.log(humanScore, computerScore, tie);
+
+  if (humanScore === 3 || computerScore === 3) break outer;
+}
 
 // announce winner
-if (humanScore === 3) {
-  return "You win!";
-} else if (computerScore === 3) {
-  return "Computer wins!";
-}
+let winner = function () {
+  if (humanScore === 3) {
+    return "You win!";
+  } else if (computerScore === 3) {
+    return "Computer wins!";
+  }
+};
+console.log(winner());
