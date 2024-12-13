@@ -28,6 +28,10 @@ const scoreBoard = document.createElement("p");
 scoreBoard.textContent = "";
 body.appendChild(scoreBoard);
 
+if (((humanScore = 0), (computerScore = 0), (tie = 0))) {
+  winner.textContent = "";
+}
+
 // announce winner
 const winner = document.createElement("p");
 winner.textContent;
