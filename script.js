@@ -1,18 +1,37 @@
-// keep score tracks
+// keep score track
 let humanScore = 0;
 let computerScore = 0;
 let tie = 0;
 
+// buttons
+const paper = document.querySelector(".paper");
+const rock = document.querySelector(".rock");
+const scissors = document.querySelector(".scissors");
+
+const buttons = document.querySelectorAll("button");
+buttons.addEventListener("click", humanSelection = div.getAttribute("class"));
+
+// create <p> textContent of humanSelection vs computerSelection
+const paraVersus = document.createElement("p");
+
+// scoreboard
+const scoreBoard = document.createElement("p"); 
+
+let humanSelection;
+
 const paperRockScissors = ["paper", "rock", "scissors"];
 
+// play round
 outer: for (let i = 0; ; i++) {
   // takes human choice
-  let humanSelection = prompt("Choose between rock, paper, and scissors");
+  //let humanSelection = prompt("Choose between rock, paper, and scissors");
 
+  /*
   if (!paperRockScissors.includes(humanSelection.toLowerCase())) {
     alert("Input only: rock, paper, or scissors");
     continue outer;
   }
+    */
 
   // generate random computer choice
   function computerSelector() {
